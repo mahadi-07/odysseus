@@ -87,8 +87,8 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 
 | # | Stage | Status | File | Notes |
 |---|-------|:------:|------|-------|
-| 1 | Orient & run it | `[~]` | [01-orient-and-run.md](01-orient-and-run.md) | App runs at http://127.0.0.1:7860. Hit "database is locked" → IntelliJ held a lock on `data/app.db`; fix = disconnect IDE then `./start-macos.sh`. |
-| 2 | Boot sequence (`app.py`) | `[ ]` | [02-boot-sequence.md](02-boot-sequence.md) | |
+| 1 | Orient & run it | `[x]` | [01-orient-and-run.md](01-orient-and-run.md) | App runs at http://127.0.0.1:7860. Hit "database is locked" → IntelliJ held a lock on `data/app.db`; fix = disconnect IDE then `./start-macos.sh`. |
+| 2 | Boot sequence (`app.py`) | `[x]` | [02-boot-sequence.md](02-boot-sequence.md) | ✅ App obj @77, middleware stack (reverse-order insight), ~39 routers as table-of-contents, startup event. |
 | 3 | Data layer (`core/database.py`) | `[ ]` | [03-data-layer.md](03-data-layer.md) | |
 | 4 | Auth (`core/auth.py`) | `[ ]` | [04-auth.md](04-auth.md) | |
 | 5 | Chat lifecycle | `[ ]` | [05-chat-lifecycle.md](05-chat-lifecycle.md) | |
@@ -98,7 +98,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 | 9 | Frontend (`static/`) | `[ ]` | [09-frontend.md](09-frontend.md) | |
 | 10 | Tests & contributing | `[ ]` | [10-tests-and-contributing.md](10-tests-and-contributing.md) | |
 
-**Currently on:** Stage 1 → next up **Stage 2 (`app.py`)**.
+**Currently on:** Stage 3 (data layer) → next up **Stage 4 (auth)**.
 
 ---
 

@@ -3,7 +3,7 @@
 ← Prev: [Stage 1](01-orient-and-run.md) · [Index](README.md) · Next: [Stage 3 — Data layer](03-data-layer.md)
 · How lessons run: [TEACHING_GUIDE.md](TEACHING_GUIDE.md)
 
-**Status:** `[ ]` not started
+**Status:** `[x]` done
 
 ---
 
@@ -52,4 +52,22 @@ Write answers below; flip Status to `[x]`; update `README.md`.
 
 ## Your answers / notes
 
-_(write here as you go)_
+**Completed 2026-06-03.** Boot sequence understood:
+1. `app.py:77` builds the FastAPI object (the web server).
+2. Stacks middleware that run on *every* request.
+3. `include_router(...)` registers ~39 feature modules; each `include_router` line
+   imports its `setup_*_routes` from a `routes/*.py` file — so the list is a
+   **table of contents** for finding any feature's code.
+4. `@app.on_event("startup")` (`:797`) runs once at boot: starts the task scheduler,
+   connects MCP/tools, warms model endpoints, webhooks, cron, etc.
+
+**Check-question answers:**
+- Q1 (middleware before chat route): `AuthMiddleware` + `_RequestTimeoutMiddleware`.
+  **Key insight learned:** `add_middleware` order is the *reverse* of execution order —
+  last added (`AuthMiddleware` @356) is outermost, so it runs FIRST. Auth happens early
+  so logged-out requests get rejected before expensive work.
+- Q2 (find Email feature): nailed it — `app.py:688-689`
+  `from routes.email_routes import setup_email_routes` → code lives in `routes/email_routes.py`.
+  Demonstrated navigating the codebase via the router list.
+- Q3 (middleware vs route): route = entry point for one specific URL+method; middleware
+  runs on every request, before and after the route. Correct.

@@ -3,7 +3,7 @@
 ← [Index](README.md) · Next: [Stage 2 — Boot sequence](02-boot-sequence.md)
 · How lessons run: [TEACHING_GUIDE.md](TEACHING_GUIDE.md)
 
-**Status:** `[~]` in progress
+**Status:** `[x]` done
 
 > **Teacher note:** run the [7-step loop](TEACHING_GUIDE.md). This stage is about the
 > *user's* view + getting it running — light on code, heavy on orientation.
