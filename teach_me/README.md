@@ -90,7 +90,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 | 1 | Orient & run it | `[x]` | [01-orient-and-run.md](01-orient-and-run.md) | App runs at http://127.0.0.1:7860. Hit "database is locked" → IntelliJ held a lock on `data/app.db`; fix = disconnect IDE then `./start-macos.sh`. |
 | 2 | Boot sequence (`app.py`) | `[x]` | [02-boot-sequence.md](02-boot-sequence.md) | ✅ App obj @77, middleware stack (reverse-order insight), ~39 routers as table-of-contents, startup event. |
 | 3 | Data layer (`core/database.py`) | `[x]` | [03-data-layer.md](03-data-layer.md) | ✅ `Session→ChatMessage` (FK :166, two-way rel 127↔177, dual cascade + SQLite `PRAGMA foreign_keys=ON` :47). 35 idempotent `_migrate_*` (no-Flyway, by-hand). Entity-vs-POJO "two Sessions" gotcha → read the **import path**. Taught via JPA→SQLAlchemy map (learner knows Spring/Hibernate). |
-| 4 | Auth (`core/auth.py`) | `[ ]` | [04-auth.md](04-auth.md) | |
+| 4 | Auth (`core/auth.py`) | `[x]` | [04-auth.md](04-auth.md) | ✅ 3-way split: **authenticate** (`AuthMiddleware.dispatch` app.py:249 → sets `request.state.current_user`) → **read** (`get_current_user` ⚠️`auth_helpers.py:8`) → **enforce** (`require_user`/`owner_filter`). bcrypt+salt pw, `secrets.token_hex` CSPRNG token (7-day TTL, in-mem), deleted-user revocation. `owner_filter` = row-level multi-tenancy on Stage-3's `owner` col. |
 | 5 | Chat lifecycle | `[ ]` | [05-chat-lifecycle.md](05-chat-lifecycle.md) | |
 | 6 | The Agent loop (`src/agent_loop.py`) | `[ ]` | [06-agent-loop.md](06-agent-loop.md) | |
 | 7 | Tools & MCP | `[ ]` | [07-tools-and-mcp.md](07-tools-and-mcp.md) | |
@@ -98,7 +98,7 @@ Legend: `[ ]` not started · `[~]` in progress · `[x]` done
 | 9 | Frontend (`static/`) | `[ ]` | [09-frontend.md](09-frontend.md) | |
 | 10 | Tests & contributing | `[ ]` | [10-tests-and-contributing.md](10-tests-and-contributing.md) | |
 
-**Currently on:** Stage 4 (auth) → next up **Stage 5 (chat lifecycle)**.
+**Currently on:** Stage 5 (chat lifecycle) → next up **Stage 6 (agent loop)**.
 
 ---
 
